@@ -18,16 +18,17 @@ const Map = ({ showMarker }) => {
 
     if (showMarker) {
       markers = [
-        [-74.5, 40],
-        [-73.9964, 40.729],
-        [-73.9963, 40.7288],
-        [-73.996, 40.7286],
+        [-73.9930, 40.729],
+        [-73.9890, 40.7288],
+        [-73.9845, 40.7286],
         [-73.9965, 40.7292]
       ].map((lngLat, index) => {
         const marker = new mapboxgl.Marker().setLngLat(lngLat).addTo(map);
-        const popup = new mapboxgl.Popup({ offset: 25 }).setText(
-          'Yhaan hardcode data dena hoga dekh koi wikipedia ki api hoto dekhle'
-        );
+        const popup = new mapboxgl.Popup({ offset: 25 }).setText(`
+          Station: SuperChargeV1.0
+          Address: NY STREET, 25TH AVN, NEW YORK UNIVERSITY CAMPUS
+          CALL ON: +00 67X89X3839
+        `);
         marker.setPopup(popup);
         return marker;
       });
@@ -39,24 +40,7 @@ const Map = ({ showMarker }) => {
     };
   }, [showMarker]);
 
-  return <div ref={mapContainer} style={{ width: '100%', height: '500px' }}/>;
+  return <div ref={mapContainer} style={{ width: '100%', height: '800px' }}/>;
 };
 
 export default Map;
-
-
-/**
- * const obj = markers[index]._lngLat;
-          const coordinates = Object.keys(obj).map((key) => obj[key]);
-          console.log(coordinates);
-          const description = "Hello World";
-
-          // Ensure that if the map is zoomed out such that multiple
-          // copies of the feature are visible, the popup appears
-          // over the copy being pointed to.
-
-          new mapboxgl.Popup()
-              .setLngLat(coordinates)
-              .setHTML(description)
-              .addTo(map);
- */
